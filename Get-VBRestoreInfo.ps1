@@ -18,10 +18,11 @@
   - find a report that contains the filesize that was transferred during a restore job
   - add a check if a jobs running, if yes, don't output runtime variable
   - optimize the cross-reference check (could take forever with many backup files)
-    - sort by unique values?
-    - create a way to exit script after finding id (will help with long lists after id)
-    - check for potential multiple id's found successfully
   - remove decimal number from runtime result
+
+.Issues to Resolve
+  - the Size variable shows the restore point filesize, not how much data was transferred for the restore process
+  - if a backup retention point is deleted after a restore is performed, the next report will show 0GB size for that restore session
 #>
 
 function Get-VBRestoreInfo {
