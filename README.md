@@ -4,6 +4,6 @@ Veeam PowerShell Script to pull info on restore jobs from Veeam Backup & Replica
 ## Instructions:
 ~~~
 cd /path/to/script/
-. .\VBRestoreInfo.ps1
-VBRestoreInfo -VBRServer localhost -ReportPath C:\Temp\
+. .\Get-VBRestoreInfo.ps1
+Get-VBRestoreInfo -VBRServer localhost -ReportPath C:\Temp\
 ~~~
