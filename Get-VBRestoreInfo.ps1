@@ -97,7 +97,7 @@ function Get-VBRestoreInfo {
         'Result' = $Restore.Result
         'Job Name' = $Restore.Options | Select-Xml -XPath '//BackupName'
         'Restore Reason' = $Restore.Description
-        'ID' = $Restore.OibUid
+        #'ID' = $Restore.OibUid
       }
       $null = $AllRestoreSessions.Add($RestoreOutput)
       Remove-Variable RestoreOutput
