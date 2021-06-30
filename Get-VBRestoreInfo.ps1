@@ -67,7 +67,6 @@ function Get-VBRestoreInfo {
       $RestoreOutput = @{
         id = $Restore.Uid
         size = $Restore.ApproxSize
-        type = $Restore.Type
       }
       $null = $AllRestoreIds.Add($RestoreOutput)
       Remove-Variable RestoreOutput
@@ -82,7 +81,6 @@ function Get-VBRestoreInfo {
       $AllRestoreIds.GetEnumerator() | ForEach-Object {
         if ($($_.id) -eq $($Restore.OibUid)) {        # check if the current id matches the job ID we want
           $size = $($_.size / 1GB)                    # store the job size and convert KB to GB
-          $type = $($_.type)                          # store the type of backup (full/incremental)
         }
       }
       # format our report
@@ -92,7 +90,6 @@ function Get-VBRestoreInfo {
         'End Time' = $Restore.EndTimeUTC
         'Runtime' = $Restore.EndTimeUTC - $Restore.CreationTimeUTC
         'Size (GB)' = [math]::round($size,2)
-        'Full/Incremental' = $type
         'Job Type' = $Restore.JobTypeString
         'Result' = $Restore.Result
         'Job Name' = $Restore.Options | Select-Xml -XPath '//BackupName'
