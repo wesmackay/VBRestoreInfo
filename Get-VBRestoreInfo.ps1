@@ -62,7 +62,7 @@ function Get-VBRestoreInfo {
     
     [System.Collections.ArrayList]$AllRestoreIds = @()
 
-    # we will store the backup job file sizes and type temporarily so we can output them in the report later
+    # we will store the backup job file sizes temporarily so we can output them in the report later
     foreach ($Restore in $RestorePoints) {
       $RestoreOutput = @{
         id = $Restore.Uid
@@ -76,7 +76,7 @@ function Get-VBRestoreInfo {
 
     # we will go through each restore session in Veeams DB and output the details in a report
     foreach ($Restore in $RestoreSessions) {
-      $size, $type = ""
+      $size = ""
       # we have to match the job ID with another report to cross reference the backup job size
       $AllRestoreIds.GetEnumerator() | ForEach-Object {
         if ($($_.id) -eq $($Restore.OibUid)) {        # check if the current id matches the job ID we want
